@@ -1,0 +1,101 @@
+<div class="d-flex justify-content-between">
+  <h3>
+    Cooperativa
+  </h3>
+  <div>
+    <button
+      type="submit"
+      form="mainForm"
+      class="btn btn-primary"
+      [disabled]="!mainForm.valid"
+    >
+      Guardar
+    </button>
+    <button
+      type="button"
+      [routerLink]="['/cooperativas']"
+      class="btn btn-secondary btn-xs ml-2"
+    >
+      Cancelar
+    </button>
+  </div>
+</div>
+
+<form id="mainForm" [formGroup]="mainForm" (ngSubmit)="onFormSubmit()">
+  <div class="form-group">
+    <label>
+      Nombre
+    </label>
+    <div>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="nombre"
+        placeholder="Nombre"
+        required
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          (mainForm.get('nombre').dirty || mainForm.get('nombre').touched) &&
+          mainForm.get('nombre').invalid &&
+          mainForm.get('nombre').errors.required
+        "
+      >
+        Este campo es requerido
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>
+      Fecha Inscripción
+    </label>
+    <div>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="fecha_inscripcion"
+        placeholder="Fecha de Inscripción"
+        required
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          (mainForm.get('fecha_inscripcion').dirty ||
+            mainForm.get('fecha_inscripcion').touched) &&
+          mainForm.get('fecha_inscripcion').invalid &&
+          mainForm.get('fecha_inscripcion').errors.required
+        "
+      >
+        Este campo es requerido
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>
+      Número de Orden
+    </label>
+    <div>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="numero_orden"
+        placeholder="Número de Orden"
+        required
+      />
+      <span
+        class="text-danger"
+        *ngIf="
+          (mainForm.get('numero_orden').dirty ||
+            mainForm.get('numero_orden').touched) &&
+          mainForm.get('numero_orden').invalid &&
+          mainForm.get('numero_orden').errors.required
+        "
+      >
+        Este campo es requerido
+      </span>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-between">
+  <h3>
+    Lista de Cooperativas
+  </h3>
+  <button
+    type="button"
+    class="btn btn-primary"
+    [routerLink]="['/cooperativas/create']"
+  >
+    Crear Nuevo
+  </button>
+</div>
+
+<table class="mt-3 table">
+  <thead class="bg-dark text-white">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Inscripción</th>
+      <th scope="col">Número de Orden</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of lista | async">
+      <th>{{ item.id }}</th>
+      <td>{{ item.nombre }}</td>
+      <td>{{ item.fecha_inscripcion }}</td>
+      <td>{{ item.numero_orden }}</td>
+      <td>
+        <span (click)="onEditar(item.id)" style="cursor: pointer;">Editar</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

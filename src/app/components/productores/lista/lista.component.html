@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-between">
+  <h3>
+    Lista de Productores
+  </h3>
+  <button
+    type="button"
+    class="btn btn-primary"
+    [routerLink]="['/productores/create']"
+  >
+    Crear Nuevo
+  </button>
+</div>
+
+<table class="mt-3 table">
+  <thead class="bg-dark text-white">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Dirección</th>
+      <th scope="col">DNI</th>
+      <th scope="col">Cooperativa</th>
+      <th scope="col">Productor Lider</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of lista | async">
+      <th>{{ item.id }}</th>
+      <td>{{ item.nombre }}</td>
+      <td>{{ item.apellido }}</td>
+      <td>{{ item.direccion }}</td>
+      <td>{{ item.dni }}</td>
+      <td>{{ item.cooperativa.nombre }}</td>
+      <td>{{ item.productor ? item.productor.nombre : "-" }}</td>
+      <td>
+        <span (click)="onEditar(item.id)" style="cursor: pointer;">Editar</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
